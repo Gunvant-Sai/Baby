@@ -43,6 +43,11 @@ function draw()
     objectDetector.detect(video,gotresult);
     if(status_ != "")
     {
+        if(object.length < 0)
+        {
+            document.getElementById("BABY").innerHTML = "Baby Not Found"; 
+            alaram.play();
+        }
       for(i= 0; i < object.length; i++)
       {
           r = random(255);
@@ -61,10 +66,11 @@ function draw()
           if(objects[i].label == "person")
           {
            document.getElementById("BABY").innerHTML = "Baby Found";
+           alaram.stop();
           }
           else{
             document.getElementById("BABY").innerHTML = "Baby Not Found"; 
-            Song.play;
+            alaram.play();
           }
       }
     }
